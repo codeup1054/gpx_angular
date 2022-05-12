@@ -12,7 +12,13 @@ export class MapGoogleComponent {
 
 
   markers = team_info.map((v: any) => {
-    return {position: {lat: v.lat, lng: v.lon}, options: {icon: v.SlackPhoto}}
+    let photoUrlArr = new Array ();
+    photoUrlArr = v.SlackPhoto.split('-',4)
+    photoUrlArr.push("40");
+    // console.log ("@@ photoUrl= ", v.SlackPhoto, photoUrlArr.slice(0, -1), photoUrlArr.join("-"));
+
+    // const photoUrl = photoUrlArr.pop().push("50").join('-')
+    return {position: {lat: v.lat, lng: v.lon}, options: {icon:photoUrlArr.join("-") }};
   });
 
 
