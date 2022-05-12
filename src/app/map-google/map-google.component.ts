@@ -10,9 +10,14 @@ import {team_info} from "./markers";
 
 export class MapGoogleComponent {
 
+  mapOptions: google.maps.MapOptions = {
+    center: { lat: 38.9987208, lng: -77.2538699 },
+    zoom : 14,
+    gestureHandling: 'greedy'
+  }
 
   markers = team_info.map((v: any) => {
-    let photoUrlArr = new Array ();
+    let photoUrlArr: any[];
     photoUrlArr = v.SlackPhoto.split('-',4)
     photoUrlArr.push("40");
     // console.log ("@@ photoUrl= ", v.SlackPhoto, photoUrlArr.slice(0, -1), photoUrlArr.join("-"));
@@ -22,16 +27,6 @@ export class MapGoogleComponent {
   });
 
 
-  // for (let [key, value] of team_info) {
-  //   console.log(key, value);
-  // }
-
-
-  // marker1 = { position: { lat: 38.9987208, lng: -77.2538699 } };
-  // marker2 = { position: { lat: 39.7, lng: -76.0 } };
-  // marker3 = { position: { lat: 37.9, lng: -76.8 } };
-  // markers = [this.marker1, this.marker2, this.marker3];
-
 
   @ViewChild(GoogleMap) map!: GoogleMap;
 
@@ -39,6 +34,7 @@ export class MapGoogleComponent {
     const bounds = this.getBounds(this.markers);
     if (this.map.googleMap) {
       this.map.googleMap.fitBounds(bounds);
+      // this.map.googleMap.setOptions({this.mapOptions})
     }
 
   }

@@ -229,7 +229,7 @@ export const team_info = [{
   'company': 'HML',
   'project': '',
   'position': 'elma',
-  'SlackPhoto': 'https://ca.slack-edge.com/T8L79NMCM-U01TTD45Z6F-c0ee9e0000c5-512',
+  'SlackPhoto': 'https://ca.slack-edge.com/T8L79NMCM-U01TTD45Z6F-3ee5b448c51b-512',
   'lat': 56.866557,
   'lon': 53.2094166
 }, {
