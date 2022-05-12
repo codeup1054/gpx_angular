@@ -5,7 +5,7 @@ import {team_info} from "./markers";
 @Component({
   selector: 'app-map-google',
   templateUrl: 'map-google.component.html',
-  styleUrls: ['map-google.component.scss'],
+  styleUrls: ['map-google.component.scss']
 })
 
 export class MapGoogleComponent {
@@ -27,14 +27,13 @@ export class MapGoogleComponent {
   });
 
 
-
   @ViewChild(GoogleMap) map!: GoogleMap;
 
   ngAfterViewInit() {
     const bounds = this.getBounds(this.markers);
     if (this.map.googleMap) {
       this.map.googleMap.fitBounds(bounds);
-      // this.map.googleMap.setOptions({this.mapOptions})
+      // this.map.googleMap.setOptions({this.mapOptions});
     }
 
   }

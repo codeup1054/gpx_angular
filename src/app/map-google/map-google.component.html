@@ -1,5 +1,6 @@
 <div class="my-google-map" style="border: 1px gray solid;">
   <google-map [width]="null" [height]="1000" [options]="mapOptions">
     <map-marker *ngFor="let marker of markers" [position]="marker.position" [options]="marker.options"></map-marker>
+    <map-info-window *ngFor="let marker of markers" [position]="marker.position">Info Window content</map-info-window>
   </google-map>
 </div>
