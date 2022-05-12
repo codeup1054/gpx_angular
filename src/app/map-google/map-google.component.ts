@@ -51,7 +51,7 @@ export class MapGoogleComponent {
       east = east !== undefined ? Math.max(east, marker.position.lng) : marker.position.lng;
       west = west !== undefined ? Math.min(west, marker.position.lng) : marker.position.lng;
     }
-    
+
 
     // const bounds = ;
 
