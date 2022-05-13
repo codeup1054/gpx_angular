@@ -1,8 +1,7 @@
 import {GoogleMap} from "@angular/google-maps";
-import {Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {team_info} from "./markers";
 import {MapInfoWindow, MapMarker} from '@angular/google-maps';
-import { faBus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-map-google',
@@ -10,7 +9,7 @@ import { faBus } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['map-google.component.scss']
 })
 
-export class MapGoogleComponent {
+export class MapGoogleComponent implements AfterViewInit, OnInit {
 
   mapOptions: google.maps.MapOptions = {
     gestureHandling: 'greedy'
@@ -24,17 +23,45 @@ export class MapGoogleComponent {
     };
   });
 
-  infoWindows = team_info.map((iw: any) => {
-    const photoUrl = (iw.SlackPhoto.split('-',4).join("-"))+"-50"
+  clusters :any = {}
 
-    return {position: {lat: iw.lat, lng: iw.lon},
-      options: {icon: photoUrl,  place: iw.place, name: iw.name},
-    };
-  });
+  infoWindows :any = {}
+
 
   @ViewChild(GoogleMap) map!: GoogleMap;
 
+  @ViewChildren(MapInfoWindow) mapInfoWindows!: QueryList<MapInfoWindow>;
+
+  ngOnInit()
+  {
+    team_info.forEach((iw: any) => {
+      const photoUrl = (iw.SlackPhoto.split('-',4).join("-"))+"-50"
+
+      let person_cards = {
+        position: {lat: iw.lat, lng: iw.lon},
+        icon: photoUrl, place: iw.place, name: iw.name
+      };
+      if (!this.clusters[iw.place]) {
+        this.clusters[iw.place] = {
+          position: {lat: iw.lat, lng: iw.lon},
+          options: {icon: photoUrl, place: iw.place, name: iw.name},
+          persons : []};
+      }
+      (this.clusters)[iw.place].persons.push(person_cards)
+    });
+
+    this.infoWindows = Object.values(this.clusters)
+  }
+
+  openInfoWindow(window: MapInfoWindow, marker: MapMarker): void {
+    window.open(marker);
+  }
+
   ngAfterViewInit() {
+    console.log("@@ infoWindows",this.infoWindows);
+
+    this.mapInfoWindows.forEach((window)=>window.open())
+
     const bounds = this.getBounds(this.markers);
     if (this.map.googleMap) {
       this.map.googleMap.fitBounds(bounds);

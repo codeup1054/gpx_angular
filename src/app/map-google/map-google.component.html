@@ -1,18 +1,33 @@
-<div class="cluster" *ngFor="let iw of infoWindows">
-  <div class="img" style="background-image: url({{iw.options.icon}})">
-  </div>
-  <span class="place">{{iw.options.place}}</span>
-  <span class="name">{{iw.options.name}}</span>
-</div>
+<!--<div class="cluster" *ngFor="let iw of infoWindows">-->
+<!--  <div *ngFor="let w of iw.persons">-->
+<!--    <div class="place">{{w.place}}</div>-->
+<!--    <div class="img" style="background-image: url({{w.icon}})">-->
+<!--    </div>-->
+<!--    <span class="name">{{w.name}}</span>-->
+<!--  </div>-->
+<!--</div>-->
+
 
 <div class="my-google-map" style="border: 1px gray solid;">
   <google-map [width]="null" [height]="1000" [options]="mapOptions">
-    <map-marker *ngFor="let marker of markers"
-                [position]="marker.position"
-                [options]="marker.options">
-      <!--                (mapClick)="openInfoWindow(marker)"-->
-
-          <map-info-window>I<div>IW</div></map-info-window>
-    </map-marker>
+    <ng-container *ngFor="let iw of infoWindows">
+      <map-marker
+        #mapMarker="mapMarker"
+        [position]="iw.position"
+        [options]="iw.options"
+        (mapClick)="openInfoWindow(markerWindow, mapMarker)"
+      ></map-marker>
+      <map-info-window
+        #markerWindow="mapInfoWindow"
+        [position]="iw.position"
+        (domready)="openInfoWindow(markerWindow, mapMarker)"
+      >
+        <div *ngFor="let w of iw.persons">
+          <div class="photo_icon" style="background-image: url({{w.icon}})"></div>
+          {{w.name}}
+          {{w.place}}
+        </div>
+      </map-info-window>
+    </ng-container>
   </google-map>
 </div>

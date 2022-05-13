@@ -3,22 +3,41 @@
   flex-direction: row;
   display: inline-block;
   margin: 3px;
-  padding: 2px;
-  width: 60px;
-  align-content: center;
+  padding: 4px;
+  width: 70px;
+  //align: center;
   border: solid gray 1px;
   border-radius: 5px;
 }
 
 .cluster .img {
-  width: 60px;
+  //width: 68px;
   height: 60px;
-  margin: 0 0 0 0px;
-  display: inline-block;
+  margin: auto;
+  //margin: 0 0 0 0px;
+  //display: inline-block;
   background-repeat: no-repeat;
   border: 0px blue solid;
   vertical-align: bottom;
+  background-position: center;
 }
 
-.cluster .place {width:50px; display: inline-block;  border: 0px gray solid; font-size: 8px;}
-.cluster .name {width:50px; display: inline-block;   display: block;  border: 0px gray solid; font-size: 10px;}
+.photo_icon
+{
+  height: 30px;
+}
+
+.cluster .place {
+  height: 14px;
+  margin: auto;
+  //font: bold;
+  border: 0px gray solid;
+  font-size: 10px;
+}
+
+.cluster .name {
+  width: 50px;
+  display: inline-block;
+  border: 0px gray solid;
+  font-size: 10px;
+}
