@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~13.3.5",
     "@angular/platform-browser-dynamic": "~13.3.5",
     "@angular/router": "~13.3.5",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@google/maps": "^1.1.3",
     "@google/markerclustererplus": "^5.1.3",
     "rxjs": "~6.6.0",
@@ -26,7 +27,6 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-
     "@angular-devkit/build-angular": "^13.3.4",
     "@angular/cli": "~13.3.4",
     "@angular/compiler-cli": "~13.3.5",

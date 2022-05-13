@@ -1,6 +1,18 @@
+<div class="cluster" *ngFor="let iw of infoWindows">
+  <div class="img" style="background-image: url({{iw.options.icon}})">
+  </div>
+  <span class="place">{{iw.options.place}}</span>
+  <span class="name">{{iw.options.name}}</span>
+</div>
+
 <div class="my-google-map" style="border: 1px gray solid;">
   <google-map [width]="null" [height]="1000" [options]="mapOptions">
-    <map-marker *ngFor="let marker of markers" [position]="marker.position" [options]="marker.options"></map-marker>
-    <map-info-window *ngFor="let marker of markers" [position]="marker.position">Info Window content</map-info-window>
+    <map-marker *ngFor="let marker of markers"
+                [position]="marker.position"
+                [options]="marker.options">
+      <!--                (mapClick)="openInfoWindow(marker)"-->
+
+          <map-info-window>I<div>IW</div></map-info-window>
+    </map-marker>
   </google-map>
 </div>
