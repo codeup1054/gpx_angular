@@ -347,8 +347,8 @@ export const team_info = [{
   'project': '',
   'position': 'mobile-developer',
   'SlackPhoto': 'https://ca.slack-edge.com/T8L79NMCM-U02EQDYPPFF-17a12fbe88c1-192',
-  'lat': 63.3233807,
-  'lon': 97.0979974
+  'lat': 56.0093807,
+  'lon': 92.872515
 }, {
   'place': 'Novorossiysk',
   'name': 'Konstantin Davydov',
